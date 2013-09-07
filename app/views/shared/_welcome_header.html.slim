@@ -6,8 +6,10 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
     nav.navbar-collapse.bs-navbar-collapse.collapse role="navigation"
       ul.nav.navbar-nav
         li
-          a href="/about" About Us
+          a href="/about" Services
         li
+          a href="/about" Culture
+        li.cta-link
           a href="/products" Shop
       ul.nav.navbar-nav.pull-right
         li
@@ -16,13 +18,15 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
             - if session_cart.shopping_cart_items.size > 0
               span.glyphicon.glyphicon-shopping-cart.active< 1
             - else
-              span.glyphicon.glyphicon-shopping-cart
+              span.glyphicon.glyphicon-shopping-cart<
         li
           - unless current_user
             = link_to 'Login',  login_path
           -else
             - if current_user.admin?
-              = link_to 'Admin', admin_users_path
+              a href="/admin/users"
+                | Admin
+                span.glyphicon.glyphicon-user<
             - else
               = link_to 'Account', myaccount_overview_path
       noscript
