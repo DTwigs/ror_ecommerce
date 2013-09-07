@@ -3,3 +3,4 @@
 //= require jquery_ujs
 //= require_tree  ./jquery
 //= require_tree  ./layout
+//= require bootstrap
