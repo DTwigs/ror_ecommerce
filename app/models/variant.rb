@@ -56,9 +56,9 @@ class Variant < ActiveRecord::Base
             :count_pending_to_customer=,
             :count_pending_from_supplier=, :to => :inventory, :allow_nil => false
 
-  ADMIN_OUT_OF_STOCK_QTY  = 0
-  OUT_OF_STOCK_QTY        = 2
-  LOW_STOCK_QTY           = 6
+  ADMIN_OUT_OF_STOCK_QTY  = -1
+  OUT_OF_STOCK_QTY        = -1
+  LOW_STOCK_QTY           = -1
 
   def featured_image(image_size = :small)
     image_urls(image_size).first

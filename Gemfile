@@ -20,7 +20,7 @@ gem 'chronic'
 gem 'compass-rails', git: 'git://github.com/Compass/compass-rails.git', branch: 'rails4-hack'
 #gem 'compass-rails',  git: 'git://github.com/milgner/compass-rails.git', branch: 'rails4'
 
-
+gem 'dalli'
 gem 'dynamic_form'
 gem 'jbuilder'
 gem "friendly_id",    '~> 5.0.0.rc1'#, :git => "git@github.com:FriendlyId/friendly_id.git", :branch => 'rails4'
