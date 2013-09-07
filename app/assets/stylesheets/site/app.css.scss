@@ -4,9 +4,12 @@
 @import "site/panel";
 @import "compass/layout/sticky-footer";
 @import "compass/utilities/general/clearfix";
+@import "./bootstrap_variables";
 @import "./bootstrap_and_overrides";
 
 // RoR eCommerce Customer-Facing Styles
+
+
 
 @include sticky-footer(54px, "#body_wrapper", "#prefooter_wrapper", "#footer_wrapper");
 

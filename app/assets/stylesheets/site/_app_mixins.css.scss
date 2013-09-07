@@ -16,6 +16,24 @@
   src: url("myriad-web-pro.ttf") format('opentype'), url("myriadpro-regular.otf") format('opentype');
 }
 
+@font-face {
+  font-family: "BankGothic";
+  src: url('/fonts/BankGothic-Bold.ttf') format('truetype');
+}
+
+@mixin title-font() {
+  font-family: 'Germania One', cursive;
+}
+
+@mixin header-font() {
+  font-family: 'BankGothic', Helvetica, Arial, sans-serif;
+}
+
+@mixin body-font() {
+  font-family: 'Cambria', Helvetica, Arial, sans-serif;
+}
+
+
 @mixin rounded($radius: 4px) {
   @include border-radius($radius);
 }
