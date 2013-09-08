@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "site/helper_mixins";
 body {
 	padding-top: 55px;
 	@include body-font;
@@ -43,6 +44,26 @@ header.navbar {
 	a {
 		letter-spacing: .1em;
 		font-size: 1.1em;
+	}
+}
+
+@include respond-to(screen-sm) {
+	.navbar-header a {
+		font-size: 1.2em;
+	}
+
+	.navbar-nav a {
+		font-size: 0.8em;
+	}
+}
+
+@include respond-to(screen-md) {
+	.navbar-header a {
+		font-size: 1.5em;
+	}
+
+	.navbar-nav a {
+		font-size: 1.2em;
 	}
 }
 

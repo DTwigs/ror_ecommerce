@@ -1,0 +1,31 @@
+// This style sheet is for sass helper mixins and functions, these should not include hard-coded properties
+
+// quickly create a breakpoint
+@mixin respond-to($media) {
+  @if $media == screen-sm {
+    @media (min-width: $screen-sm) { @content; }
+  }
+  @else if $media == screen-md {
+    @media (min-width: $screen-md) { @content; }
+  }
+  @else if $media == screen-lg {
+    @media (min-width: $screen-lg) { @content; }
+  }
+}
+
+// generate extendable placeholders that extend across media queries
+@mixin placeholder($sm-visible: false, $md-visible: false, $lg-visible: false) {
+  @content;
+
+  @if $sm-visible {
+    @include respond-to(screen-sm) { @content; }
+  }
+
+  @if $md-visible {
+    @include respond-to(screen-md) { @content; }
+  }
+
+  @if $lg-visible {
+    @include respond-to(screen-lg) { @content; }
+  }
+}

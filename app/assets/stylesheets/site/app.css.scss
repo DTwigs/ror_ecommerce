@@ -109,19 +109,31 @@ ul {
   position: relative;
   margin: 0 auto;
   top: -83px;
-  background-color: $gray-dark;
-  color: $brand-info;
-  border-radius: 4px 4px 0 0;
   height: 80px;
   width: 150px;
   font-size: 3.5em;
   padding: 0 50px 10px 50px;
-  cursor: pointer;
-
 
   &.active {
     visibility: visible;
+    opacity: 0.9;
+    @include single-transition(opacity, .2s);
+    span {
+      opacity: 0.6;
+    }
+    &:hover, &:hover * {
+      opacity: 1;
+    }
   }
+}
+
+.uptab-primary {
+  background-color: $gray-dark;
+  color: $brand-info;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
 }
 
 

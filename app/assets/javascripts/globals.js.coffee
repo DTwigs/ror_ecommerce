@@ -23,5 +23,8 @@ namespace 'rcr.home', (exports) ->
 	eventHandlers = ->
 		$("#scrollTab").click (evt)->
 			evt.preventDefault()
+			exports.scrollToAnchor(this)
 
-			$('html,body').animate({scrollTop:1000}, 1000,'swing');
+	exports.scrollToAnchor = (anchor)->
+		dest = $(anchor).offset().top
+		$('html,body').animate({scrollTop:dest}, 1000,'swing');

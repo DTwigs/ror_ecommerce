@@ -6,9 +6,11 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
     nav.navbar-collapse.bs-navbar-collapse.collapse role="navigation"
       ul.nav.navbar-nav
         li
-          a href="/about" Services
+          a href="/#info" Info
         li
-          a href="/about" Culture
+          a href="/#services" Services
+        li
+          a href="/#culture" Culture
         li.cta-link
           a href="/products" Shop
       ul.nav.navbar-nav.pull-right
@@ -21,7 +23,9 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
               span.glyphicon.glyphicon-shopping-cart<
         li
           - unless current_user
-            = link_to 'Login',  login_path
+            a href="/login"
+              | Login
+              span.glyphicon.glyphicon-user<
           -else
             - if current_user.admin?
               a href="/admin/users"
