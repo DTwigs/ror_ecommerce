@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require jquery.validationEngine-en
+//= require jquery.validationEngine
 //= require_tree  ./jquery
 //= require_tree  ./layout
 //= require ./globals

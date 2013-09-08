@@ -33,3 +33,9 @@ namespace 'rcr.home', (exports) ->
 	exports.scrollToAnchor = (anchor)->
 		dest = $(anchor).offset().top
 		$('html,body').animate({scrollTop:dest}, 1000,'swing');
+
+
+namespace 'rcr.login', (exports) ->
+	exports.init = ->
+		$ ->
+			$("form").validationEngine()

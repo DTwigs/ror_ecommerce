@@ -17,18 +17,17 @@
       <%= stylesheet_link_tag 'ie6.css', :media => 'screen, projection' %>
   <![endif]-->
   <%= csrf_meta_tag %>
-  <%= javascript_include_tag 'application' %>
+
   <%= yield :head %>
 
   <%= render 'shared/metadata' %>
 
 </head>
 
-<body >
+<body class="no-content">
 <div id='body_wrapper'>
 
   <%= render :partial => '/shared/welcome_header'%>
-  <%= render :partial => '/layouts/messages'%>
 
     <div id='content_wrapper' class='row <%= "myaccount" if myaccount_tab %> '>
       <%  if myaccount_tab %>
@@ -41,8 +40,10 @@
     </div>
     <div id='prefooter_wrapper'>&nbsp;</div>
 </div>
+  <%= javascript_include_tag 'application' %>
   <%= render 'shared/google_analytics' unless @disable_ga %>
   <%= render 'shared/main_footer' %>
+
 
   <%= yield :bottom %>
 

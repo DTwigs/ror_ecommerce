@@ -1,3 +1,4 @@
+@import "validationEngine.jquery";
 @import "site/app_mixins";
 @import "site/my_account";
 @import "site/cart";
@@ -8,6 +9,7 @@
 @import "compass/css3/text-shadow";
 @import "./bootstrap_variables";
 @import "./bootstrap_and_overrides";
+@import "login";
 
 // RoR eCommerce Customer-Facing Styles
 

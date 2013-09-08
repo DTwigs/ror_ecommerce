@@ -21,7 +21,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    current_user_session.destroy
+    current_user_session.destroy if current_user_session
     reset_session
     cookies.delete(:hadean_uid)
     redirect_to login_url, :notice => I18n.t('logout_successful')
