@@ -14,7 +14,6 @@
   <%= stylesheet_link_tag 'ie.css', :media => 'screen, projection'%>
   <![endif]-->
   <%= csrf_meta_tag %>
-  <%= javascript_include_tag 'application' %>
   <%= yield :head %>
 
   <%= render 'shared/metadata' %>
@@ -42,18 +41,17 @@
 </div>
   <%= render 'shared/main_footer' %>
   <%= yield :bottom %>
-
+  <%= javascript_include_tag 'application' %>
   <script>
-  jQuery(window).ready(
+  $(window).ready(
     function() {
       jQuery('.flash_notice').delay(6000).slideUp( 'slow');
       jQuery('.flash_error').delay(6000).slideUp( 'slow');
     }
   );
   </script>
-  <script>
-    $(document).foundation();
-  </script>
+
+  <%= yield :js_bottom %>
 </body>
   <%= render 'shared/google_analytics' unless @disable_ga %>
   <%= yield :below_body %>

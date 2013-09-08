@@ -41,6 +41,7 @@ gem 'rmagick',    :require => 'RMagick'
 gem 'rake', '~> 10.0.3'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem "slim", "~> 2.0.1"
+gem "coffee-script", "~> 2.2.0"
 # gem 'resque', require: 'resque/server'
 
 gem 'state_machine', '~> 1.2.0'
