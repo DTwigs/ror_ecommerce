@@ -30,7 +30,7 @@ EXAMPLE USAGE!!
   def add_child_link(name, association)
     link_to(name, "javascript:void(0);", :class => "add_child", :"data-association" => association)
   end
-  
+
   def add_child_button(name, association)
     link_to(name, "javascript:void(0);", :class => "add_child button", :"data-association" => association)
   end
@@ -47,4 +47,14 @@ EXAMPLE USAGE!!
       end
     end
   end
+
+  def flash_class(level)
+    case level
+        when :notice then "alert alert-info"
+        when :success then "alert alert-success"
+        when :error then "alert alert-error"
+        when :alert then "alert alert-error"
+    end
+  end
+
 end

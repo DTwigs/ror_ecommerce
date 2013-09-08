@@ -23,33 +23,15 @@
 <div id='body_wrapper'>
   <%= render :partial => '/shared/welcome_header'%>
 
-  <% if notice || alert %>
-    <div class="row">
-      <% if notice || alert %>
-        <div class="flash_messages">
-          <%= raw "<div data-alert class='alert-box warning'> #{notice} <a href='' class='close'>&times;</a></div>"  if notice %>
-          <%= raw "<div data-alert class='alert-box alert'>#{alert} <a href='' class='close'>&times;</a></div>"     if alert %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-
-    <div id='content_wrapper' class='row'>
-      <%= yield %>
-    </div>
-    <div id='prefooter_wrapper'>&nbsp;</div>
+  <div id='content_wrapper' class='row'>
+    <%= yield %>
+  </div>
+  <div id='prefooter_wrapper'>&nbsp;</div>
 </div>
   <%= render 'shared/main_footer' %>
   <%= yield :bottom %>
   <%= javascript_include_tag 'application' %>
-  <script>
-  $(window).ready(
-    function() {
-      jQuery('.flash_notice').delay(6000).slideUp( 'slow');
-      jQuery('.flash_error').delay(6000).slideUp( 'slow');
-    }
-  );
-  </script>
+
 
   <%= yield :js_bottom %>
 </body>

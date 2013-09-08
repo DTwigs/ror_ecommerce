@@ -1,25 +1,17 @@
 @import "site/app_mixins";
+@import "./bootstrap_variables";
+@import "./bootstrap_and_overrides";
 
 body {
-  background:#F4F4F4;
+  background: $gray-dark;
+  color: $gray-light;
 }
 
 #register-wrapper, #login-wrapper {
   padding-top:26px;
 }
 
-div #login {
-  margin-right: 20px;
-  background: none repeat scroll 0 0 #FFFFFF;
-  border: 3px solid #E6E6E6;
-}
-div #signup, div #login {
-  text-align:left;
-  padding: 17px;
-  display: inline;
-  float: left;
-  width: 280px;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+.hadean-login {
 
   fieldset {
     border: none;
@@ -33,8 +25,10 @@ div #signup, div #login {
     font-size:13px;
   }
   h3 {
+    @include header-font();
     font-size: 18px;
     margin-bottom: 5px;
+    color: $brand-warning;
   }
 }
 
@@ -49,7 +43,6 @@ label {
 
 input.text, input.title, input[type="text"], input[type="password"], input[type="email"] {
   @include rounded(4px);
-  @include gradient();
   margin: 0.15em 0;
   border: 1px solid #CCCCCC;
   font-size: 13px;

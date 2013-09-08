@@ -8,6 +8,11 @@ $ ->
 	$(window).resize ()->
 		rcr.home.setBannerSize()
 
+	if $('.alert').length > 0
+		$('.alert').removeClass("fresh")
+		setTimeout (->
+			$('.alert').addClass('fresh')
+		), 3500
 
 namespace 'rcr.home', (exports) ->
 	exports.init = ->

@@ -1,8 +1,17 @@
 @import "bootstrap";
 @import "site/helper_mixins";
+
 body {
 	padding-top: 55px;
 	@include body-font;
+}
+
+a {
+	@include single-transition(color, .2s);
+}
+
+a.close {
+	font-size: 20px;
 }
 
 header.navbar {
@@ -47,6 +56,37 @@ header.navbar {
 	}
 }
 
+.alert {
+	position: fixed;
+	padding: 5px;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 1;
+  @include header-font;
+  @include single-transition(all, .4s);
+
+  &.fresh {
+  	margin-top: -68px;
+  	opacity: 0;
+  }
+}
+
+.alert-error {
+	background-color: $brand-primary;
+	border-color: $brand-primary-darker;
+	color: $body-bg;
+}
+
+.alert-info {
+	background-color: $brand-info;
+	border-color: $brand-info-darker;
+	color: $body-bg;
+}
+
+/* MEDIA QUERIES */
 @include respond-to(screen-sm) {
 	.navbar-header a {
 		font-size: 1.2em;
@@ -65,8 +105,4 @@ header.navbar {
 	.navbar-nav a {
 		font-size: 1.2em;
 	}
-}
-
-a {
-	@include single-transition(color, .2s);
 }
