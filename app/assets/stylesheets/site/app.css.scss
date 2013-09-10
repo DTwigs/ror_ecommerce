@@ -97,7 +97,7 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   position: relative;
   min-height: 400px;
   z-index: -1;
@@ -157,6 +157,7 @@ ul {
     color: #FFF;
     @include text-shadow(0 -1px 1px $gray-darker);
     margin-left: 12px;
+    font-size: 1.5em;
   }
 }
 
@@ -175,6 +176,11 @@ ul {
       @include box-shadow(inset 0 3px 3px rgba(0, 0, 0, .3));
     }
 
+    &.active, a:hover {
+      color: $brand-info;
+      border-left: 3px solid $brand-info;
+    }
+
     a {
       color: $gray-light;
       width: 100%;
@@ -182,10 +188,6 @@ ul {
       letter-spacing: .2em;
       @include header-font;
       display: block;
-      &:hover {
-        color: $brand-info;
-        border-left: 3px solid $brand-info;
-      }
     }
   }
 }
@@ -210,6 +212,16 @@ ul {
   margin-top: 40px;
   @include rounded(4px);
   @include box-shadow(0 5px 10px $body-bg, inset 0 1px 1px $gray, inset 0 -1px 1px $gray-darker);
+}
+
+@include respond-to(screen-sm) {
+  .big-banner {
+    background-attachment: fixed;
+  }
+
+  .side-nav-header h3 {
+    font-size: 1.8em;
+  }
 }
 
 @include respond-to(screen-md) {

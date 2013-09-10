@@ -153,6 +153,9 @@ GEM
     faker (1.2.0)
       i18n (~> 0.5)
     ffi (1.9.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     fog (1.15.0)
       builder
       excon (~> 0.25.0)
@@ -345,6 +348,7 @@ DEPENDENCIES
   factory_girl (~> 3.3.0)
   factory_girl_rails (~> 3.3.0)
   faker
+  figaro
   friendly_id (~> 5.0.0.rc1)
   haml (>= 3.0.13)
   jbuilder

@@ -37,6 +37,7 @@ gem 'prawn',        '~> 0.12.0'
 gem "rails3-generators", :git => "https://github.com/neocoin/rails3-generators.git"
 gem "rails_config"
 gem 'rmagick',    :require => 'RMagick'
+gem 'figaro'
 
 gem 'rake', '~> 10.0.3'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
