@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% yield :meta %>
   <title>
     <%= site_name %>: <%= yield :title %>
   </title>
@@ -31,9 +32,6 @@
 
     <div id='content_wrapper' class='row <%= "myaccount" if myaccount_tab %> '>
       <%  if myaccount_tab %>
-        <h1 style='text-align:center;'><%= site_name %></h1>
-        <hr class="first_double_hr">
-        <hr class="second_double_hr">
         <%= render :partial => '/shared/myaccount_subheader' %>
       <% end %>
       <%= yield %>

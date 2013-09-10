@@ -1,3 +1,5 @@
+= content_for :meta do
+  meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1'
 
 = content_for :head do
   = stylesheet_link_tag 'cupertino/jquery-ui-1.8.12.custom'
@@ -44,7 +46,7 @@
               =form.label :password, 'Password'
                 = form.password_field :password, :autocomplete => 'off', :autocapitalize => 'off', :class => 'validate[required]', :placeholder => "Password"
 
-          = form.submit "Log In", :class => 'button'
+          = form.submit "Log In", :class => 'btn btn-info'
 
       = link_to 'forgot password?', new_customer_password_reset_path()
 
@@ -72,7 +74,7 @@
               =form.label :password_confirmation, 'Confirm*'
               = form.password_field :password_confirmation, :autocomplete => 'off', :autocapitalize => 'off', :class => 'validate[required]'
 
-        = form.submit "Register", :class => 'button'
+        = form.submit "Register", :class => 'btn'
 
 = content_for :bottom do
   javascript:

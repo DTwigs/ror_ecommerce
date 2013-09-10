@@ -8,6 +8,9 @@ body {
 
 a {
 	@include single-transition(color, .2s);
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 a.close {
@@ -17,6 +20,11 @@ a.close {
 header.navbar {
   border-top: 3px solid $brand-primary;
   @include box-shadow(0px 2px 8px $gray-darker);
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .navbar-inverse {
@@ -41,7 +49,7 @@ header.navbar {
 
 	a {
 		padding: 15px;
-		font-size: 1.5em;
+		font-size: 1.2em;
 		text-transform: uppercase;
 		letter-spacing: .15em;
 	}
@@ -86,6 +94,10 @@ header.navbar {
 	color: $body-bg;
 }
 
+.btn {
+  @include header-font;
+}
+
 /* MEDIA QUERIES */
 @include respond-to(screen-sm) {
 	.navbar-header a {
@@ -106,3 +118,4 @@ header.navbar {
 		font-size: 1.2em;
 	}
 }
+
