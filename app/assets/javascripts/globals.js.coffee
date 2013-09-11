@@ -28,11 +28,18 @@ namespace 'rcr.home', (exports) ->
 	eventHandlers = ->
 		$("#scrollTab").click (evt)->
 			evt.preventDefault()
-			exports.scrollToAnchor(this)
+			exports.scrollToAnchor($("#info"))
+		$(".anchorlink").click (evt)->
+			evt.preventDefault()
+			$(".bs-navbar-collapse").collapse('hide')
+			dest = $(this).attr('href')
+			dest = dest.replace('/', '')
+			exports.scrollToAnchor($(dest))
+
 
 	exports.scrollToAnchor = (anchor)->
 		dest = $(anchor).offset().top
-		$('html,body').animate({scrollTop:dest}, 1000,'swing');
+		$('html,body').animate({scrollTop:dest}, 700,'swing');
 
 
 namespace 'rcr.login', (exports) ->

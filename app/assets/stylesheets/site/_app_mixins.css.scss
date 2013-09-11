@@ -29,8 +29,13 @@
   font-family: 'BankGothic', Helvetica, Arial, sans-serif;
 }
 
-@mixin body-font() {
-  font-family: 'Cambria', Helvetica, Arial, sans-serif;
+@mixin body-font-1() {
+  font-family: 'Cutive Mono', Helvetica, Arial, sans-serif;
+}
+
+@mixin body-font-2() {
+  font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+  letter-spacing: 0.1em;
 }
 
 

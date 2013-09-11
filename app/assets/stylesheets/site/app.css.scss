@@ -16,7 +16,7 @@
 @include sticky-footer(54px, "#body_wrapper", "#prefooter_wrapper", "#footer_wrapper");
 
 h2, h3, h4, h5 {
-  @include header-font;
+  @include body-font-1();
   color: $brand-info;
 }
 
@@ -105,7 +105,7 @@ ul {
 
 .content-page {
   height: 100%;
-  border-top: 8px solid $gray-dark;
+  border-top: 8px solid $gray-darker;
   background-color: $body-bg;
 }
 
@@ -133,7 +133,7 @@ ul {
 }
 
 .uptab-primary {
-  background-color: $gray-dark;
+  background-color: $gray-darker;
   color: $brand-info;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
@@ -176,17 +176,17 @@ ul {
       @include box-shadow(inset 0 3px 3px rgba(0, 0, 0, .3));
     }
 
-    &.active, a:hover {
-      color: $brand-info;
-      border-left: 3px solid $brand-info;
+    &.active a, a:hover {
+      color: #FFF;
+      border-left: 5px solid $brand-info;
     }
 
     a {
+      @include body-font-2();
       color: $gray-light;
       width: 100%;
       padding: 4px 0 4px 30px;
       letter-spacing: .2em;
-      @include header-font;
       display: block;
     }
   }
@@ -214,6 +214,85 @@ ul {
   @include box-shadow(0 5px 10px $body-bg, inset 0 1px 1px $gray, inset 0 -1px 1px $gray-darker);
 }
 
+.anchor {
+  border-top:60px solid transparent;
+  margin-top:-60px;
+  -webkit-background-clip:padding-box;
+  -moz-background-clip:padding;
+  background-clip:padding-box;
+}
+
+.section {
+  border-bottom: 2px solid $gray-darker;
+  border-top: 1px solid $gray;
+  padding: 25px 0 0 0;
+
+  &:first-child {
+    border-top: none;
+    margin-top: -50px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.section-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: $brand-warning;
+  margin-bottom: 55px;
+  @include text-shadow(0 -1px 1px $gray-darker);
+}
+
+.tribin {
+  @extend .row;
+  margin: 10px 0 55px 0;
+}
+
+.tribin-bucket {
+  @extend .row;
+  @include border-radius(8px);
+  border-top: 1px solid #000;
+  border-bottom: 1px solid $gray;
+  background-color: $gray-darker;
+  display: block;
+  padding: 15px;
+  margin-bottom:10px;
+  @include box-shadow(inset 0 1px 2px #000);
+
+  &:hover > * {
+    color: #FFF;
+  }
+
+}
+
+.tribin-bucket-header {
+  color: $brand-info;
+  text-align: right;
+  font-size: 2.5em;
+  @extend .col-xs-3;
+  @extend .col-sm-5;
+  @extend .col-md-12;
+}
+
+.tribin-bucket-body {
+  color: $gray-light;
+  font-size: 1em;
+  @extend .col-xs-9;
+  @extend .col-sm-7;
+  @extend .col-md-12;
+
+  &.address {
+    padding-top: 8px;
+  }
+
+  &.phone {
+    padding-top: 18px;
+  }
+}
+
 @include respond-to(screen-sm) {
   .big-banner {
     background-attachment: fixed;
@@ -222,6 +301,14 @@ ul {
   .side-nav-header h3 {
     font-size: 1.8em;
   }
+
+  .tribin-bucket-header{
+    font-size: 3em;
+  }
+
+  .tribin-bucket-body {
+    font-size: 1.5em;
+  }
 }
 
 @include respond-to(screen-md) {
@@ -229,6 +316,32 @@ ul {
     padding: 25px;
     margin-top: 60px;
     width: 100%;
+  }
+
+  .tribin-bucket {
+    height: 200px;
+  }
+
+  .tribin-bucket-header, .tribin-bucket-body {
+    text-align: center;
+  }
+
+  .tribin-bucket-body {
+    &.address {
+      padding-top: 20px;
+    }
+
+    &.phone {
+      padding-top: 35px;
+    }
+  }
+}
+
+@include respond-to(screen-lg) {
+
+  .tribin {
+    margin-left: 100px;
+    margin-right: 100px;
   }
 }
 

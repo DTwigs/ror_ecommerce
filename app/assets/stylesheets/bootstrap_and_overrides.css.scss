@@ -3,7 +3,7 @@
 
 body {
 	padding-top: 55px;
-	@include body-font;
+	@include body-font-2();
 }
 
 a {
@@ -11,6 +11,10 @@ a {
 	&:hover {
 		text-decoration: none;
 	}
+}
+
+.container {
+	padding: 0;
 }
 
 a.close {
