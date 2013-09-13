@@ -65,6 +65,9 @@ class Product < ActiveRecord::Base
   validates :meta_description,      :presence => true,        :length => { :maximum => 255 }, :if => :active
   validates :permalink,             :uniqueness => true,      :length => { :maximum => 150 }
 
+  scope :coffee_blends, -> { joins(:product_type).where("product_types.parent_id = ? OR product_type_id = ?", 2, 2) }
+  scope :coffee_singles, -> { joins(:product_type).where("product_types.parent_id = ? OR product_type_id = ?", 3, 3) }
+
   def hero_variant
     active_variants.detect{|v| v.master } || active_variants.first
   end

@@ -1,0 +1,26 @@
+
+
+.container
+  .boat.with-sail
+    .boat-header
+      h2.boat-header-text
+        | COFFEE
+    / #right_side_panel.three.columns.last
+    /   #right_side_panel_promo
+    /     | Join our web site and get additional Savings....
+    /     = image_tag "logos/#{Image::MAIN_LOGO}.png", :alt => 'hadean image.'
+    .boat-body.col-md-12
+      #interesting_items
+        h3 BLENDS
+        ul#interesting_items-list
+          - @products.coffee_blends.each_with_index do |product, i|
+            = render :partial => 'product_image', :locals => { :product => product }
+
+        .clearfix
+        h3 SINGLE ORIGINS
+        ul#interesting_items-list
+          - @products.coffee_singles.each_with_index do |product, i|
+            = render :partial => 'product_image', :locals => { :product => product }
+
+        .clearfix
+

@@ -14,14 +14,35 @@ ul#interesting_items-list {
     display:inline-block;
     height:100%;
 
-    .interesting_items-details {
-      text-align: center;
-      font-family: Economica, san-serif;
-
+    .product-caption {
+      display: block;
+      position: absolute;;
+      bottom: 0px;
+      height: 45px;
+      width: 100%;
+      max-width: 200px;
+      background-color: rgba(0, 0, 0, 0.85);
+      overflow: hidden;
     }
+
+    .interesting_items-details {
+      position: relative;
+      top: 0;
+      padding-top:15px;
+      line-height: 12px;
+      text-align: center;
+      @include header-font();
+      color: $brand-info;
+
+      &.two-line {
+        padding-top: 10px;
+      }
+    }
+
     .interesting_items-image {
       position: relative;
       text-align:center;
+      @include box-shadow(0 3px 5px #111);
 
 
       &:hover {
