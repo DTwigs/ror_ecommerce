@@ -16,6 +16,10 @@
 
 @include sticky-footer(54px, "#body_wrapper", "#prefooter_wrapper", "#footer_wrapper");
 
+input[type='text'], input[type='email'], input[type='password'] {
+  width: 100%;
+}
+
 h2, h3, h4, h5 {
   @include body-font-1();
   color: $brand-info;
@@ -23,6 +27,11 @@ h2, h3, h4, h5 {
 
 h3 {
   margin-top: 10px;
+}
+
+h3.divider {
+  color: $brand-warning;
+  border-bottom: 2px solid $gray-light;
 }
 
 .clearfix {
@@ -314,6 +323,7 @@ ul {
   @extend .row;
   @extend .paddle;
   width: 100%;
+  color: $gray-light;
 
   &.with-sail {
     border-top: 3px solid $brand-primary;
@@ -340,6 +350,10 @@ ul {
   padding: 15px 10px;
 }
 
+.boat-wrapper {
+  padding: 0;
+}
+
 .anchor {
   border-top:60px solid transparent;
   margin-top:-60px;
@@ -348,33 +362,6 @@ ul {
   background-clip:padding-box;
 }
 
-// .section {
-//   border-bottom: 1px solid $gray;
-//   border-top: 1px solid #000;
-//   padding: 25px 0 0 0;
-//   background-color: $body-bg-light;
-//   margin-bottom: 15px;
-//   @include border-radius(8px);
-
-//   &:first-child {
-//     //border-top: none;
-
-//   }
-
-//   &:last-child {
-//     //border-bottom: none;
-//   }
-// }
-
-// .section-title {
-//   display: block;
-//   width: 100%;
-//   text-align: center;
-//   color: $brand-warning;
-//   margin-bottom: 25px;
-//   @include text-shadow(0 -1px 1px $gray-darker);
-// }
-
 .champion-image {
   width: 243px;
   margin-left: 50%;
@@ -382,12 +369,19 @@ ul {
   position: relative;
   display: none;
 }
+.vertical-form {
+  li {
+    padding-top:5px;
+  }
+}
 
 .bump {
-  border-top: 1px solid $gray;
-  border-bottom: 1px solid #000;
-  background-color: $gray-darker;
-  @include border-radius(8px);
+  border-top: 3px solid $brand-info;
+  @include box-shadow(0 2px 5px #111);
+  // border-top: 1px solid $gray;
+  // border-bottom: 1px solid #000;
+   background-color: $gray-darker;
+  // @include border-radius(8px);
 }
 
 .bucket {
@@ -464,9 +458,9 @@ ul {
 }
 
 @include respond-to(screen-sm) {
-  .play-video {
-    top: 150px;
-  }
+  // .play-video {
+  //   top: 150px;
+  // }
 
   .big-banner {
     background-attachment: fixed;
@@ -476,8 +470,13 @@ ul {
     font-size: 1.8em;
   }
 
+  .boat-wrapper {
+    padding: 0 15px;
+  }
+
   .tribin-bucket {
     height: 200px;
+    padding-top: 10px;
   }
 
   .tribin-bucket-wrapper {
@@ -526,6 +525,10 @@ ul {
 
   .boat-body {
     padding:25px 35px;
+  }
+
+  .boat-wrapper {
+    padding: 0 25px;
   }
 
   .champion-image {

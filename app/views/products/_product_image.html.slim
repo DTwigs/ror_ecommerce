@@ -16,19 +16,31 @@ li id="interesting_product_{# i }'"
         /       | to
         /       = number_to_currency product.price_range.last
 
-      .product-caption
-        -if product.name.length > 16
-          .interesting_items-details.two-line
-            = product.name
-        - else
-          .interesting_items-details
-            = product.name
+      .product-caption-wrapper
+        .product-caption
+          -if product.name.length > 18
+            .interesting_items-details.two-line
+              = product.name
+          - else
+            .interesting_items-details
+              = product.name
+          - keywords = product_short_desc(product.meta_keywords)
+          / .media
+          /   .pull-left
+          /     .glyphicon.glyphicon-leaf
+          /   .media-heading
+          /     = keywords
+          - if keywords.length > 26
+            .keywords.two-line
+              = keywords
+          - else
+            .keywords
+              = keywords
 
         / .product-caption-info
         /   = product.description
 
-      = link_to image_tag(product.featured_image(:medium)), product_path(product),
-                    :title => product.name, :class => 'clearfix'
+      = link_to image_tag(product.featured_image(:medium)), product_path(product), title: product.name, class: 'product-image clearfix'
 
 
   br

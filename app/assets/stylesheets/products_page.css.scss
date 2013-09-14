@@ -14,15 +14,47 @@ ul#interesting_items-list {
     display:inline-block;
     height:100%;
 
-    .product-caption {
+    .product-caption-wrapper {
       display: block;
-      position: absolute;;
+      position: absolute;
       bottom: 0px;
       height: 45px;
       width: 100%;
       max-width: 200px;
       background-color: rgba(0, 0, 0, 0.85);
       overflow: hidden;
+
+      .product-caption {
+        position: relative;
+        top: 0;
+        @include single-transition(top, .2s);
+
+        &.hovering {
+          top: -45px;
+        }
+      }
+
+      .keywords {
+        height: 45px;
+        padding-top: 15px;
+        line-height: 14px;
+        //padding-top: 20px;
+        @include body-font-2();
+        color: $brand-warning;
+
+        &.two-line {
+          padding-top: 10px
+        }
+      }
+    }
+
+    .product-image {
+      display: block;
+      width: 138px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .interesting_items-details {
@@ -32,7 +64,8 @@ ul#interesting_items-list {
       line-height: 12px;
       text-align: center;
       @include header-font();
-      color: $brand-info;
+      color: $gray-lighter;
+      height: 45px;
 
       &.two-line {
         padding-top: 10px;
@@ -86,7 +119,6 @@ ul#interesting_items-list {
 }
 
 div {
-  color: #3F3D42;
   #featured_description {
     font-family: Economica, san-serif;
     line-height: 1.3;
@@ -96,4 +128,20 @@ div {
 }
 #featured_image {
   padding-bottom:7px;
+}
+
+@include respond-to(screen-sm) {
+    ul#interesting_items-list li {
+    .product-image {
+      width: 163px;
+    }
+  }
+}
+
+@include respond-to(screen-md) {
+    ul#interesting_items-list li {
+    .product-image {
+      width: 198px;
+    }
+  }
 }

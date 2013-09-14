@@ -57,4 +57,10 @@ EXAMPLE USAGE!!
     end
   end
 
+  def product_short_desc(meta_keywords)
+    keywords = []
+    meta_keywords.split(",").each_with_index {|word, index| keywords << word if index < 3}
+    return keywords.join(",")
+  end
+
 end

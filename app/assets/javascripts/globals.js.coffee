@@ -89,3 +89,21 @@ namespace 'rcr.login', (exports) ->
 	exports.init = ->
 		$ ->
 			$("form").validationEngine()
+
+namespace 'rcr.products', (exports) ->
+	exports.init = ->
+		$ ->
+			$(".interesting_items-image").mouseenter ->
+					$(this).find(".product-caption").addClass("hovering")
+				.mouseleave ->
+					$(this).find(".product-caption").removeClass("hovering")
+
+
+	startHover = (hoveree) ->
+		$(hoveree).addClass("hovering")
+	endHover = (hoveree) ->
+		$(hoveree).removeClass("hovering")
+
+
+
+
