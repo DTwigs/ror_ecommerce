@@ -1,4 +1,3 @@
-@import "site/app_mixins";
 
 $hadean_black            : #242729;
 $hadean_gray_background  : #e8e8e8;
@@ -11,8 +10,44 @@ $error_background         : #FBE3E4;
   #product {
     font-family: "MyriadPro", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     color:$hadean_black;
+
+    .product-column {
+      @extend .col-sm-6;
+      @extend .col-md-5;
+      padding: 0;
+      margin: 0;
+    }
+
+    .product-info-column {
+      @extend .col-sm-6;
+      @extend .col-md-7;
+      padding: 0;
+      margin: 0;
+    }
+
+    .product-description-panel, .product-column img {
+      width: 298px;
+    }
+
+    .product-description-panel {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 8px;
+    }
+
     .product_title_name {
-      font-size:2.25em;
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 22px;
+      @include header-font();
+      color: $brand-warning;
+    }
+
+    .product-keywords {
+      line-height: 16px;
+      @include body-font-2();
+      letter-spacing: 0.2em;
+      color: $gray-light;
+      text-align: center;
     }
     .product_content {
       display:block;
@@ -182,5 +217,28 @@ $error_background         : #FBE3E4;
     background-color:#eee;
     margin-top:5px;
     margin-bottom:10px;
+  }
+}
+
+@include respond-to(screen-sm) {
+  #content_wrapper {
+    #product {
+      .product-column img {
+        width: 320px;
+      }
+      .product-description-panel {
+        width: 100%;
+      }
+
+      .product_title_name {
+        font-size: 2.2em;
+        line-height: 26px;
+      }
+
+      .product-keywords {
+        line-height: 20px;
+        font-size: 1.3em;
+      }
+    }
   }
 }

@@ -24,7 +24,7 @@ li id="interesting_product_{# i }'"
           - else
             .interesting_items-details
               = product.name
-          - keywords = product_short_desc(product.meta_keywords)
+          - keywords = product_short_desc(product.meta_keywords).titleize
           / .media
           /   .pull-left
           /     .glyphicon.glyphicon-leaf

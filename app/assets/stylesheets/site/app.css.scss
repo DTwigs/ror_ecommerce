@@ -11,6 +11,7 @@
 @import "./bootstrap_and_overrides";
 @import "login";
 @import "products_page";
+@import "product_page";
 
 // RoR eCommerce Customer-Facing Styles
 
@@ -49,6 +50,8 @@ h3.divider {
 }
 
 ul {
+  padding: 0;
+  margin: 0;
   list-style: none;
   &.vertical-list {
     display: block;
@@ -96,13 +99,13 @@ ul {
   }
 }
 
-.footer-list {
-  @extend .inline-list;
+// .footer-list {
+//   @extend .inline-list;
 
-  li {
-    font-size:1.2em;
-  }
-}
+//   li {
+//     font-size:1.2em;
+//   }
+//}
 
 .footer-link {
   .phone-text {
@@ -113,8 +116,8 @@ ul {
   }
 }
 
-.footer-list-right {
-  @extend .inline-list-right;
+.footer-list {
+  @extend .inline-list;
   width: 160px;
   margin: 0 auto;
 
@@ -122,6 +125,7 @@ ul {
     @include body-font-1();
     padding: 5px 20px;
     font-size: 2em;
+    display: inline-block;
   }
 }
 
@@ -335,6 +339,16 @@ ul {
   width: 100%;
   background-color: #1e1e1e;
   padding: 15px 0;
+
+  a {
+    margin-left: 25px;
+    color: $gray-light;
+    @include header-font();
+
+    &:hover {
+      color: $brand-warning;
+    }
+  }
 }
 
 .boat-header-text {
@@ -535,23 +549,25 @@ ul {
     display: block;
   }
 
-  ul.footer-list {
-    display: inline-block;
-    li {
-      padding: 3px 10px;
-      border-right: 1px solid $gray-dark;
-      display: inline-block;
-      font-size: 1.2em;
-    }
+  // ul.footer-list {
+  //   width: auto;
+  //   margin: 0 auto;
+  //   display: inline-block;
+  //   li {
+  //     padding: 3px 10px;
+  //     border-right: 1px solid $gray-dark;
+  //     display: inline-block;
+  //     font-size: 1.2em;
+  //   }
 
-    li:last-child {
-      padding: 3px 0 3px 10px;
-      border-right: none;
-    }
-  }
+  //   li:last-child {
+  //     padding: 3px 0 3px 10px;
+  //     border-right: none;
+  //   }
+  // }
 
 
-  .footer-list-right {
+  .footer-list {
     width: auto;
     margin: 0;
     float: right;
@@ -560,7 +576,6 @@ ul {
     li {
       padding: 3px 10px;
       border-right: 1px solid $gray-dark;
-      display: inline-block;
       font-size: 1.2em;
     }
 
