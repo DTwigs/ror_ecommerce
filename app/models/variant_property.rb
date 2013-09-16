@@ -7,6 +7,10 @@ class VariantProperty < ActiveRecord::Base
   validates :property_id,  :presence => true
   validates :description,  :presence => true,       :length => { :maximum => 255 }
 
+  PROPERTIES = {
+    :bag_size => 1,
+    :grind => 2
+  }
 
   # name of the property
   #

@@ -280,6 +280,9 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    select2-rails (3.4.8)
+      sass-rails
+      thor (~> 0.14)
     selenium-webdriver (2.35.1)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -378,6 +381,7 @@ DEPENDENCIES
   rspec-rails (~> 2.12.2)
   rspec-rails-mocha
   sass-rails (~> 4.0.0)
+  select2-rails
   slim (~> 2.0.1)
   sqlite3
   state_machine (~> 1.2.0)

@@ -6,6 +6,11 @@ class ProductType < ActiveRecord::Base
 
   FEATURED_TYPE_ID = 1
 
+  CATEGORIES = {
+    :blend => 2,
+    :single => 3
+  }
+
   # paginated results from the admin ProductType grid
   #
   # @param [Optional params]

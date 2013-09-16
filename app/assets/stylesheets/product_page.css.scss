@@ -16,6 +16,17 @@ $error_background         : #FBE3E4;
       @extend .col-md-5;
       padding: 0;
       margin: 0;
+
+      li {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      img {
+        position: relative;
+        width: 298px;
+        margin-left: 50%;
+        left: -149px;
+      }
     }
 
     .product-info-column {
@@ -25,13 +36,10 @@ $error_background         : #FBE3E4;
       margin: 0;
     }
 
-    .product-description-panel, .product-column img {
-      width: 298px;
-    }
-
     .product-description-panel {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 10px 8px;
+      width: 100%;
     }
 
     .product_title_name {
@@ -63,7 +71,7 @@ $error_background         : #FBE3E4;
     }
     #your_product {
       display:block;
-      font-size:1.5em;
+      font-size:1em;
 
       #product_your_fit_title {
         display: inline-block;
@@ -137,9 +145,6 @@ $error_background         : #FBE3E4;
   }
 
   #left_product_wrapper {
-    img {
-      //border: 1px solid #ccc;
-    }
     .interesting_items-details {
       float:right;
       display:inline;
@@ -147,7 +152,7 @@ $error_background         : #FBE3E4;
   }
 
   div {
-    color: #3F3D42;
+
     #product_description {
       font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
       line-height: 1.3;
@@ -172,17 +177,32 @@ $error_background         : #FBE3E4;
     color:#777;
   }
 
+  .variant_select {
+    border: solid 1px $gray;
+    background-color: $gray-darker;
+    width: 100%;
+    font-size: .8em;
+    color: $gray-lighter;
+    @include header-font();
+    padding: 8px 12px;
+    margin-bottom:5px;
+    background-image: none;
+  }
+
+  .variant_select_arrow {
+    position: absolute;
+    width: 100%;
+    text-align: right;
+  }
+
   .button.secondary.selected_variant {
-    border: solid 1px #FFA500;
-    background-color: #eff;
+
   }
 
   .variant_properties {
     display:none;
     &.selected {display:block;}
   }
-
-  .variant_select {margin-bottom:10px;}
 
   #add-to-cart_form-wrapper {
 
@@ -193,7 +213,9 @@ $error_background         : #FBE3E4;
     text-align:left;
   }
 
-  ul { margin: 0 0.5em 0.15em 0; list-style-type:none; }
+  ul {
+    list-style-type:none;
+  }
 
   #product-details {
     border:1px solid #CCC;
@@ -223,8 +245,14 @@ $error_background         : #FBE3E4;
 @include respond-to(screen-sm) {
   #content_wrapper {
     #product {
-      .product-column img {
-        width: 320px;
+      .product-column {
+        li {
+          background-color: transparent;
+        }
+        img {
+          width: 320px;
+          left: -160px;
+        }
       }
       .product-description-panel {
         width: 100%;

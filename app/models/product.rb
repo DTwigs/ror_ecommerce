@@ -48,6 +48,13 @@ class Product < ActiveRecord::Base
   has_many :active_variants, -> { where(deleted_at: nil) },
     class_name: 'Variant'
 
+  has_many :variant_properties
+
+  has_many :bagsize_variants, -> { select("variant_properties.*").joins(:variant_properties).where("variant_properties.property_id = ?", VariantProperty::PROPERTIES[:bag_size]) },
+    class_name: 'Variant'
+  has_many :grind_variants, -> { select("variant_properties.*").joins(:variant_properties).where("variant_properties.property_id = ?", VariantProperty::PROPERTIES[:grind]) },
+    class_name: 'Variant'
+
 
   before_validation :sanitize_data
   before_validation :not_active_on_create!, :on => :create
@@ -65,8 +72,8 @@ class Product < ActiveRecord::Base
   validates :meta_description,      :presence => true,        :length => { :maximum => 255 }, :if => :active
   validates :permalink,             :uniqueness => true,      :length => { :maximum => 150 }
 
-  scope :coffee_blends, -> { joins(:product_type).where("product_types.parent_id = ? OR product_type_id = ?", 2, 2) }
-  scope :coffee_singles, -> { joins(:product_type).where("product_types.parent_id = ? OR product_type_id = ?", 3, 3) }
+  scope :coffee_blends, -> { joins(:product_type).where("product_types.parent_id = ? OR product_type_id = ?", ProductType::CATEGORIES[:blend], ProductType::CATEGORIES[:blend]) }
+  scope :coffee_singles, -> { joins(:product_type).where("product_types.parent_id = ? OR product_type_id = ?", ProductType::CATEGORIES[:single], ProductType::CATEGORIES[:single]) }
 
   def hero_variant
     active_variants.detect{|v| v.master } || active_variants.first
@@ -90,6 +97,70 @@ class Product < ActiveRecord::Base
     Rails.cache.fetch("Product-featured_image-#{id}-#{image_size}", :expires_in => 3.hours) do
       images.first ? images.first.photo.url(image_size) : "no_image_#{image_size.to_s}.jpg"
     end
+  end
+
+  def grinds_list
+    grind_hash = {}
+
+    grind_desc = []
+    grind_id = []
+    repeat_desc = []
+    #Create hash of unique variant_property descriptions (i.e. Whole Bean, French press, etc)
+    grind_variants.map{ |vp| grind_hash[vp.description] = [vp.variant_id] }
+    #Create two reference arrays, one for grind descriptions and one for grind IDs
+    grind_variants.map{ |vp|  grind_desc << vp.description; grind_id << vp.variant_id }
+    #Create an array of the descriptions with repeats
+    repeat_desc << grind_desc.detect{ |e| grind_desc.count(e) > 1 }
+    repeat_desc.flatten.each do |desc|
+      ## For each repeated description
+      repeat_indices = []
+      grind_hash[desc] = []
+      ## Get the indices of the repeated descriptions to match to the grind_id array
+      repeat_indices << grind_desc.each_index.select { |index| grind_desc[index] == desc }
+      ## Get the ids based on the index and add it to the hash.
+      repeat_indices.flatten.each { |index| grind_hash[desc] << grind_id[index] }
+    end
+    return grind_hash
+  end
+
+  def bagsizes_list
+    bs_hash = {}
+    bs_desc = []
+    bs_id = []
+    repeat_desc = []
+    #Create hash of unique variant_property descriptions (i.e. Whole Bean, French press, etc)
+    bagsize_variants.map{ |vp| bs_hash[vp.description] = [vp.variant_id] }
+    #Create two reference arrays, one for grind descriptions and one for grind IDs
+    bagsize_variants.map{ |vp|  bs_desc << vp.description; bs_id << vp.variant_id }
+    #Create an array of the descriptions with repeats
+    repeat_desc << bs_desc.detect{ |e| bs_desc.count(e) > 1 }
+    repeat_desc.flatten.each do |desc|
+      ## For each repeated description
+      repeat_indices = []
+      bs_hash[desc] = []
+      ## Get the indices of the repeated descriptions to match to the grind_id array
+      repeat_indices << bs_desc.each_index.select { |index| bs_desc[index] == desc }
+      ## Get the ids based on the index and add it to the hash.
+      repeat_indices.flatten.each { |index| bs_hash[desc] << bs_id[index] }
+    end
+    return bs_hash
+  end
+
+  def create_coffee_variants
+    self.variants << Variant.new(:sku => '0001', :name => 'Half Pound - Whole Bean')
+    self.variants << Variant.new(:sku => '0001', :name => 'Half Pound - French Press')
+    self.variants << Variant.new(:sku => '0001', :name => 'Half Pound - Drip')
+    self.variants << Variant.new(:sku => '0001', :name => 'Half Pound - Espresso')
+
+    self.variants << Variant.new(:sku => '0002', :name => 'Full Pound - Whole Bean')
+    self.variants << Variant.new(:sku => '0002', :name => 'Full Pound - French Press')
+    self.variants << Variant.new(:sku => '0002', :name => 'Full Pound - Drip')
+    self.variants << Variant.new(:sku => '0002', :name => 'Full Pound - Espresso')
+
+    self.variants << Variant.new(:sku => '0003', :name => 'Five Pound - Whole Bean')
+    self.variants << Variant.new(:sku => '0003', :name => 'Five Pound - French Press')
+    self.variants << Variant.new(:sku => '0003', :name => 'Five Pound - Drip')
+    self.variants << Variant.new(:sku => '0003', :name => 'Five Pound - Espresso')
   end
 
   def image_urls(image_size = :small)

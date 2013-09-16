@@ -98,11 +98,10 @@ namespace 'rcr.products', (exports) ->
 				.mouseleave ->
 					$(this).find(".product-caption").removeClass("hovering")
 
-
-	startHover = (hoveree) ->
-		$(hoveree).addClass("hovering")
-	endHover = (hoveree) ->
-		$(hoveree).removeClass("hovering")
+namespace 'rcr.product', (exports) ->
+	exports.init = ->
+		$ ->
+			$("#your_product").select2()
 
 
 
