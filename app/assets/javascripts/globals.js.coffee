@@ -101,7 +101,38 @@ namespace 'rcr.products', (exports) ->
 namespace 'rcr.product', (exports) ->
 	exports.init = ->
 		$ ->
-			$("#your_product").select2()
+			$('#your_product').change ->
+				selected = $(this).find('option:selected')
+				price = selected.attr('data-price')
+				quantity = $('#cart_item_quantity').find('option:selected').val()
+				setPrice(price, quantity)
+				$('#cart_item_variant_id').val(selected.attr('data-variant_id'))
+
+			$('#cart_item_quantity').change ->
+				price = $('#your_product').find('option:selected').attr('data-price')
+				quantity = $(this).find('option:selected').val()
+				setPrice(price, quantity)
+
+	setPrice = (price, quantity)->
+		number = Number(price.replace(/[^0-9\.]+/g,""));
+		newPrice = number * quantity
+		newPrice = "$" + newPrice.toFixed(2)
+		$('.product_content_price').text(newPrice)
+
+namespace 'rcr.addresses', (exports) ->
+	exports.init = ->
+		$ ->
+			width = $('#shopping_addresses_selections').width()
+			bwidth = $('.boat-body').width()
+			sol = (bwidth - width) / 2
+			$('#shopping_addresses_selections').css('left', sol)
+
+namespace 'rcr.shipping', (exports) ->
+	exports.init = ->
+		$ ->
+			$('input[type="radio"]').first().prop('checked',true)
+			$('.shipping-item').click ->
+				$(this).find('input[type="radio"]').prop('checked',true)
 
 
 

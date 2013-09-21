@@ -1,28 +1,31 @@
 <div class="container">
-  <div class="boat">
-    <div class='col-md-4 col-sm-6'>
-      <div class="side-nav">
-        <div class="side-nav-header">
-          <% if content_for? :account_title %>
-            <h3><%= yield :account_title %></h3>
-          <% else %>
-            <h3>Your Account</h3>
-          <% end %>
-        </div>
+  <div class="boat with-sail">
+    <div class="boat-body">
+      <div class='col-md-4 col-sm-6'>
+        <div class="side-nav">
+          <div class="side-nav-header">
+            <% if content_for? :account_title %>
+              <h3><%= yield :account_title %></h3>
+            <% else %>
+              <h3>Your Account</h3>
+            <% end %>
+          </div>
 
-        <ul  class="side-nav-items">
-          <li <%= selected_myaccount_tab('profile') ? 'class=active' : '' %>>
-            <%= link_to 'Profile', myaccount_overview_path() %>
-          </li>
-          <li <%= selected_myaccount_tab('address') ? 'class=active' : '' %>>
-            <%= link_to 'Addresses', myaccount_addresses_path() %>
-          </li>
-          <li <%= selected_myaccount_tab('orders') ? 'class=active' : '' %>>
-            <%= link_to 'Orders', myaccount_orders_path() %>
-          </li>
-          <li <%= selected_myaccount_tab('referrals') ? 'class=active' : '' %>>
-            <%= link_to 'Referrals', myaccount_referrals_path() %>
-          </li>
-        </ul>
+          <ul  class="side-nav-items">
+            <li <%= selected_myaccount_tab('profile') ? 'class=active' : '' %>>
+              <%= link_to 'Profile', myaccount_overview_path() %>
+            </li>
+            <li <%= selected_myaccount_tab('address') ? 'class=active' : '' %>>
+              <%= link_to 'Addresses', myaccount_addresses_path() %>
+            </li>
+            <li <%= selected_myaccount_tab('orders') ? 'class=active' : '' %>>
+              <%= link_to 'Orders', myaccount_orders_path() %>
+            </li>
+            <li <%= selected_myaccount_tab('referrals') ? 'class=active' : '' %>>
+              <%= link_to 'Referrals', myaccount_referrals_path() %>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+
+

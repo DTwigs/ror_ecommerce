@@ -4,6 +4,11 @@ class Shopping::CartItemsController < Shopping::BaseController
   def index
     @cart_items       = session_cart.shopping_cart_items
     @saved_cart_items = session_cart.saved_cart_items
+
+    @totalPrice = 0
+    @cart_items.each do |item|
+      @totalPrice += item.total
+    end
   end
 
   # POST /shopping/cart_items

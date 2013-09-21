@@ -1,0 +1,41 @@
+.cig-row
+  .cig-item
+    = image_tag item.variant.featured_image
+    b
+      = link_to item.variant.product.name, product_path(item.variant.product)
+  .cig-i.col-sm-3.clearfix
+    = item.variant.product_name
+  .cig-i.cig-quantity
+    .label.visible-xs
+      | Qty:
+    = item.quantity
+  .cig-remove
+    = link_to '', shopping_cart_item_path(item, :variant_id => item.variant_id), :method => :delete, :class => 'glyphicon glyphicon-remove'
+  .cig-subtotal
+    = number_to_currency(item.price * item.quantity)
+
+
+/ tr
+/   td width="18%" valign="top" align="right" style='padding:2px;'
+/     div id='remove_#{ i }_from_cart'
+/       ul
+/         li
+/           = link_to '', shopping_cart_item_path(item, :variant_id => item.variant_id), :method => :delete, :class => 'glyphicon glyphicon-remove'
+
+/   td valign="top" style="padding-right: 20px;"
+/     .small
+/       = image_tag item.variant.featured_image
+/       b
+/         = link_to item.variant.product_name, product_path(item.variant.product)
+
+/   td valign="top" class="small"
+/     b.price
+/       = number_to_currency item.price
+/     br
+/     br
+/   td valign="top"
+/     = cart_items_form.number_field :quantity, :size=>"2"
+
+/ tr
+/   td colspan="5"
+/     hr color='#222'

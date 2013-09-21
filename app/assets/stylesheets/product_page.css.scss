@@ -58,12 +58,14 @@ $error_background         : #FBE3E4;
       text-align: center;
     }
     .product_content {
+      margin-top: 20px;
       display:block;
       .product_content_price {
         text-align:left;
-        color:#717171;
-        font-size:2.0em;
-        margin-bottom:1em;
+        color: $brand-info;
+        font-size:2.5em;
+        @include body-font-2;
+        float: right;
       }
     }
     .product_content_description {
@@ -71,7 +73,6 @@ $error_background         : #FBE3E4;
     }
     #your_product {
       display:block;
-      font-size:1em;
 
       #product_your_fit_title {
         display: inline-block;
@@ -178,21 +179,35 @@ $error_background         : #FBE3E4;
   }
 
   .variant_select {
-    border: solid 1px $gray;
-    background-color: $gray-darker;
+    // border: solid 1px $gray;
+    // background-color: #FFF;
     width: 100%;
-    font-size: .8em;
-    color: $gray-lighter;
+    // font-size: 1.1em;
+    // color: $gray-darker;
+    // @include header-font();
+    // padding: 8px 12px;
+    // margin-bottom:5px;
+    // background-image: none;
+    // -webkit-appearance: none;
+  }
+
+
+  #cart_item_quantity {
+    display: block;
+    border: solid 1px $gray;
+    background-color: #FFF;
+    width: 75px;
+    font-size: 1.2em;
+    color: $gray-darker;
     @include header-font();
     padding: 8px 12px;
     margin-bottom:5px;
     background-image: none;
   }
 
-  .variant_select_arrow {
-    position: absolute;
-    width: 100%;
-    text-align: right;
+  .halfbox {
+    width: 50%;
+    display: inline-block;
   }
 
   .button.secondary.selected_variant {

@@ -9,10 +9,10 @@
 @import "compass/css3/text-shadow";
 @import "./bootstrap_variables";
 @import "./bootstrap_and_overrides";
-@import "select2";
 @import "login";
 @import "products_page";
 @import "product_page";
+@import "shopping_cart_page";
 
 // RoR eCommerce Customer-Facing Styles
 
@@ -21,6 +21,7 @@
 input[type='text'], input[type='email'], input[type='password'] {
   width: 100%;
 }
+
 
 h2, h3, h4, h5 {
   @include body-font-1();
@@ -154,6 +155,17 @@ ul {
 
 .unfade:hover {
   opacity: 1;
+}
+
+#user-cart-items {
+
+  &.active {
+    color: $brand-warning;
+  }
+  i {
+    position: relative;
+    top: -1px;
+  }
 }
 
 #content_wrapper {
@@ -390,6 +402,12 @@ ul {
   }
 }
 
+.checkout-button {
+  margin: 15px 0 0;
+  float:right;
+  width: 100%;
+}
+
 .bump {
   border-top: 3px solid $brand-info;
   @include box-shadow(0 2px 5px #111);
@@ -397,6 +415,28 @@ ul {
   // border-bottom: 1px solid #000;
    background-color: $gray-darker;
   // @include border-radius(8px);
+
+  &.bump-list {
+    display: inline-block;
+    width: 100%;
+    margin: 0 7px;
+    padding: 8px 10px;
+    line-height: 30px;
+  }
+
+  &.bump-fluid {
+    display: inline-block;
+    margin: 0 7px 20px 7px;
+    padding: 8px 10px;
+    line-height: 30px;
+    width: 100%;
+  }
+
+}
+
+#shopping_addresses_selections {
+  position: relative;
+  display: inline-block;
 }
 
 .bucket {
@@ -472,6 +512,83 @@ ul {
   }
 }
 
+.shipping-container {
+  margin-bottom: 15px;
+}
+
+.shipping-item {
+  font-size: 1.3em;
+  padding: 12px 15px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.well {
+  border: 1px solid #111;
+  background-color: $gray-darker;
+  padding: 15px 0;
+}
+
+.item-grid {
+
+  .item {
+    margin: 5px 10px;
+    line-height: 15px;
+
+    &.semi {
+      margin-top: 15px;
+      border-top: 1px solid #111;
+    }
+
+    &.normal {
+      line-height: 20px;
+      padding: 5px;
+      text-align: right;
+      margin: 0;
+      @include header-font();
+      font-size: 0.9em;
+
+      .media-body {
+        color: $gray-lighter;
+      }
+    }
+
+    &.special {
+      border-top: 2px solid $gray-light;
+      .media-body {
+        color: $brand-info;
+        font-weight: 700;
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  .item-header {
+    color: #FFF;
+  }
+}
+
+.shipping-text {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.total {
+  font-size: 1.2em;
+  line-height: 40px;
+  margin-right: 20px;
+  color: #FFF;
+}
+
+.full-width-col-mobile {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
 @include respond-to(screen-sm) {
   // .play-video {
   //   top: 150px;
@@ -526,6 +643,34 @@ ul {
     }
   }
 
+  .bump {
+
+    &.bump-list {
+      display: inline-block;
+      width: 240px;
+      margin: 0 7px;
+    }
+
+    &.bump-fluid {
+      height: 200px;
+
+    }
+  }
+
+  .checkout-button {
+    width: 180px;
+  }
+
+  .item .checkout-button {
+    width: 100%;
+  }
+
+  .full-width-col-mobile {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
 }
 
 @include respond-to(screen-md) {
@@ -535,7 +680,7 @@ ul {
   }
 
   .boat-header-text {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   .boat-body {

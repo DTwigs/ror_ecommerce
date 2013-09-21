@@ -13,6 +13,20 @@ a {
 	}
 }
 
+select {
+   border: solid 1px $gray;
+  background-color: #FFF;
+  font-size: 1.1em;
+  color: $gray-darker;
+  @include header-font();
+  padding: 8px 12px;
+  margin-bottom:5px;
+  background-image: none;
+  height: 35px;
+  line-height: 35px;
+  width: 100%;
+}
+
 .container {
 	padding: 0;
 }
@@ -119,7 +133,7 @@ header.navbar {
 	}
 
 	.navbar-nav a {
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 }
 

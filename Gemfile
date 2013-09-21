@@ -43,7 +43,6 @@ gem 'rake', '~> 10.0.3'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3'
 gem "slim", "~> 2.0.1"
 gem "coffee-script", "~> 2.2.0"
-gem "select2-rails"
 
 # gem 'resque', require: 'resque/server'
 

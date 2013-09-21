@@ -163,6 +163,13 @@ class Product < ActiveRecord::Base
     self.variants << Variant.new(:sku => '0003', :name => 'Five Pound - Espresso')
   end
 
+  def set_all_variants_inventory_amt
+    self.variants.each do |variant|
+      variant.inventory[:count_on_hand] = 9999999
+      variant.inventory.save
+    end
+  end
+
   def image_urls(image_size = :small)
     Rails.cache.fetch("Product-image_urls-#{id}-#{image_size}", :expires_in => 3.hours) do
       images.empty? ? ["no_image_#{image_size.to_s}.jpg"] : images.map{|i| i.photo.url(image_size) }

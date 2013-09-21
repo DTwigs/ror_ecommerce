@@ -44,11 +44,7 @@
                     = @product.name
                   .product-keywords
                     = product_short_desc(@product.meta_keywords).titleize
-                - if @product.active_variants.count > 0
-                  .product_content
-                    .product_content_price
-                      = number_to_currency @product.active_variants.first.price
-
+                .product_content
 
                   / select#your_product
                   /   - @product.grinds_list.each_with_index do |description, i|
@@ -69,22 +65,21 @@
                   /       option value="#{description[1]}"
                   /         = description[0]
 
+                  | Weight - Grind
                   select.variant_select#your_product
                     - @product.active_variants.each_with_index do |variant, i|
-                      /div.button.variant_select.secondary id='variant_#{variant.id}' class='#{ i == 0 ? "selected_variant" : ""}' data-variant_id='#{variant.id}'
-                      - if i == 0
-                        option id='variant_#{variant.id}' selected='true'
-                          = raw variant.product_name
-                      - else
-                        option id='variant_#{variant.id}'
-                          = raw variant.product_name
+                      option id='variant_#{variant.id}' data-price='#{number_to_currency(variant.price)}' data-variant_id='#{variant.id}'
+                        = raw variant.product_name
                   .properties_inner_wrapper
-                    hr
                     = form_for  @cart_item, :url  => shopping_cart_items_path(@cart_item), :html => { :id => 'new_cart_item', :class => 'custom' } do |f|
                         = f.hidden_field :variant_id
-                        .four
-                          | Quantity:
+                        .halfbox.pull-left
+                          | Quantity
                           = f.select :quantity, [1,2,3,4,5], {:include_blank => false}, {:class => ' '}
+                        .halfbox
+                          - if @product.active_variants.count > 0
+                            .product_content_price
+                              = number_to_currency @product.active_variants.first.price
 
                         .add_to_cart_wrapper
                           - unless @product.active_variants.empty?
@@ -98,25 +93,25 @@
                     .section-container.tabs style='height:100%;' data-section='' data-options="deep_linking: true;"
                       section.section
                         p.title
-                          a Product
+                          a Description
                         .content
                           div
                             = raw @product.description
 
-                      section.section
-                        p.title
-                          a Properties
-                        .content
-                          div
-                            - @product.active_variants.each_with_index do |var, i|
-                              div id='variant_properties_#{var.id }' class='variant_properties #{'selected' if i == 0 }'
-                                ul.vertical-list
-                                  - var.variant_properties.each do |prop|
-                                    li
-                                      label
-                                        = prop.property_name
-                                        | :
-                                      = prop.description
+                      / section.section
+                      /   p.title
+                      /     a Properties
+                      /   .content
+                      /     div
+                      /       - @product.active_variants.each_with_index do |var, i|
+                      /         div id='variant_properties_#{var.id }' class='variant_properties #{'selected' if i == 0 }'
+                      /           ul.vertical-list
+                      /             - var.variant_properties.each do |prop|
+                      /               li
+                      /                 label
+                      /                   = prop.property_name
+                      /                   | :
+                      /                 = prop.description
 
   | &nbsp;
   .clearfix style='height:50px;'

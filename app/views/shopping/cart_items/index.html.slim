@@ -1,0 +1,52 @@
+.container
+  .boat.with-sail
+    .boat-header
+      - if  @cart_items.blank? && @saved_cart_items.empty?
+        h2.boat-header-text
+          = I18n.t(:nothing_in_cart)
+      - elsif  @cart_items.blank?
+        h2.boat-header-text
+          = I18n.t(:only_items_saved_for_later)
+        .panel.graceful
+          h3 style='text-align:center;color:#333;'
+            = I18n.t(:add_items_saved_for_later)
+      - else
+        h2.boat-header-text
+          | Your Cart
+    #cart-items-wrapper.boat-body
+      - unless @cart_items.blank?
+        = form_for session_cart, :url => shopping_cart_item_path(session_cart), :as => :cart do |cart_form|
+
+          - unless @cart_items.blank?
+            ul
+              li
+                = cart_form.submit 'checkout', {:checkout => 1, :class => 'btn btn-info pull-right'}
+                span.total.pull-right
+                  | Your cart total is: &nbsp;
+                  = number_to_currency(@totalPrice)
+              li.clearfix
+
+          .cart-item-grid
+            .cig-header.row.hidden-xs
+              .col-sm-5
+                | Item
+              .col-sm-3
+                | Details
+              .col-sm-1
+                | Qty
+              .col-sm-1
+                | Remove
+              .cig-subtotal
+                | Subtotal
+            .cig-body.well
+              - @cart_items.each_with_index do |item, i|
+                = cart_form.fields_for :shopping_cart_items, item do |cart_items_form|
+                  = render :partial => 'cart_item', :locals => {:cart_items_form => cart_items_form, :item => item, :i => i }
+
+        .clearfix
+          = link_to 'Checkout', shopping_orders_path, :class => 'btn btn-info pull-right'
+          span.total.pull-right
+            | Your cart total is: &nbsp;
+            = number_to_currency(@totalPrice)
+
+

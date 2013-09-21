@@ -1,0 +1,38 @@
+.container
+  .boat.with-sail
+    .boat-header
+      h1.boat-header-text Pick a Shipping Method
+    .boat-body
+      .row
+        = form_tag(shopping_shipping_method_path(session_order.id), :method => :put) do
+          - @order_items.group_by(&:shipping_category_id).each do |shipping_category_id, items|
+            .col-sm-6.shipping-container
+              ul
+                - items.first.shipping_rate_options(session_order.sub_total).each do |rate|
+                  li.shipping-item.bump
+                    = radio_button_tag "shipping_category[#{shipping_category_id}]", rate.id
+                    .shipping-text
+                      = rate.name_rate_min
+
+              = submit_tag 'continue', :class => 'btn btn-info'
+
+            .item-grid.col-sm-6.well.clearfix
+              - items.each do |item|
+                .media.item.clearfix
+                  .pull-left
+                    = image_tag(item.variant.product.featured_image(:mini))
+                  .media-header.item-header
+                    = item.variant.product.name
+                  .media-body
+                    = item.variant.product_name
+                    br
+                    | Quantity: &nbsp;
+                    = item.quantity
+
+
+
+                = raw item.variant.display_property_details
+
+= content_for :bottom do
+  javascript:
+    rcr.shipping.init();

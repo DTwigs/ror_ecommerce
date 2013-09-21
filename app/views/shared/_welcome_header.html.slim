@@ -24,7 +24,9 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
           a href="/shopping/cart_items"
             | Cart
             - if session_cart.shopping_cart_items.size > 0
-              span.glyphicon.glyphicon-shopping-cart.active< 1
+              span.glyphicon.glyphicon-shopping-cart#user-cart-items.active<
+                i
+                  = session_cart.number_of_shopping_cart_items
             - else
               span.glyphicon.glyphicon-shopping-cart<
         li
@@ -38,7 +40,9 @@ header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
                 | Admin
                 span.glyphicon.glyphicon-user<
             - else
-              = link_to 'Account', myaccount_overview_path
+              a href="/myaccount/overview"
+                | Account
+                span.glyphicon.glyphicon-user<
       noscript
         ul.nav.navbar-nav.pull-right
           li

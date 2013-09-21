@@ -3,7 +3,6 @@
 //= require jquery_ujs
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
-//= require select2
 //= require_tree  ./jquery
 //= require_tree  ./layout
 //= require ./globals
