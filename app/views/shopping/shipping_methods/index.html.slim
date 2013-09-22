@@ -8,11 +8,11 @@
           - @order_items.group_by(&:shipping_category_id).each do |shipping_category_id, items|
             .col-sm-6.shipping-container
               ul
-                - items.first.shipping_rate_options(session_order.sub_total).each do |rate|
-                  li.shipping-item.bump
-                    = radio_button_tag "shipping_category[#{shipping_category_id}]", rate.id
-                    .shipping-text
-                      = rate.name_rate_min
+                - rate = items.first.max_shipping_rate_option(session_order.sub_total) #.each do |rate|
+                li.shipping-item.bump
+                  = radio_button_tag "shipping_category[#{shipping_category_id}]", rate.id
+                  .shipping-text
+                    = rate.name_rate_min
 
               = submit_tag 'continue', :class => 'btn btn-info'
 

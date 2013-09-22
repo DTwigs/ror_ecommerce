@@ -96,6 +96,11 @@ class OrderItem < ActiveRecord::Base
                         AND shipping_rates.minimum_charge <= ?', ship_category_id, order.ship_address.state.shipping_zone_id, total_charge])
   end
 
+  def max_shipping_rate_option(total_charge)
+    options = shipping_rate_options(total_charge)
+    options.max { |x, y| x.minimum_charge <=> y.minimum_charge }
+  end
+
   # called in checkout process. will give you the 'quantity', 'sum of all the prices' and 'sum of all the totals'
   #  it is better to do the math in SQL than ruby
   #

@@ -134,6 +134,11 @@ namespace 'rcr.shipping', (exports) ->
 			$('.shipping-item').click ->
 				$(this).find('input[type="radio"]').prop('checked',true)
 
+namespace 'rcr.checkout', (exports) ->
+	exports.init = ->
+		$ ->
+			$("form").validationEngine()
+
 
 
 
